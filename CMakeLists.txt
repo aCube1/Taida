@@ -1,6 +1,6 @@
 project(taida VERSION 0.0.1 LANGUAGES C)
 
-file(GLOB SRCS "src/*.c" "src/utils/*.c")
+file(GLOB SRCS "src/Taida/*.c" "src/Taida/utils/*.c")
 
 add_library(${PROJECT_NAME} STATIC ${SRCS})
 
