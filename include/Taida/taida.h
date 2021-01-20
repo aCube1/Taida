@@ -10,8 +10,6 @@
 #include "Taida/utils/log.h"
 
 typedef struct taida_callbacks {
-	void (*init)(void);
-
 	void (*update)(void);
 	void (*render)(void);
 

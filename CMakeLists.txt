@@ -1,4 +1,4 @@
-project(taida VERSION 0.0.1 LANGUAGES C)
+project(Taida VERSION 0.0.1 LANGUAGES C)
 
 file(GLOB SRCS "src/Taida/*.c" "src/Taida/utils/*.c")
 

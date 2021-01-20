@@ -8,13 +8,13 @@ void taida_log(int const priority, char const *msg)
 			fprintf(stderr, "[ERROR] %s\n", msg);
 			break;
 		case LOGP_WARNNING:
-			fprintf(stderr, "[WARNNING] %s\n", msg);
+			fprintf(stderr, "[WARN] %s\n", msg);
 			break;
 		case LOGP_DEBUG:
 			fprintf(stderr, "[DEBUG] %s\n", msg);
 			break;
-		default:
-			fprintf(stderr, "[LOG] %s\n", msg);
+		case LOGP_INFO:
+			fprintf(stderr, "[INFO] %s\n", msg);
 			break;
 	}
 }
