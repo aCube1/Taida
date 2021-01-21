@@ -77,14 +77,16 @@ void taida_destroy(taida_t *taida)
 	taida_log_debug("TAIDA - Engine Closed and Destroyed");
 }
 
-void taida_run_loop(taida_t *taida)
+void taida_loop(taida_t *taida)
 {
-	while (taida->running) {
-		taida->callbacks.update();
-		taida->callbacks.render();
+	taida->callbacks.update();
+	taida->callbacks.render();
 
-		glfwSwapBuffers(taida->window);
-		glfwPollEvents();
-	}
+	glfwSwapBuffers(taida->window);
+	glfwPollEvents();
 }
 
+bool taida_window_isopen(taida_t *taida)
+{
+	return !(bool) glfwWindowShouldClose(taida->window);
+}
