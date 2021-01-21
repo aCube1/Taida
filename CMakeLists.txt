@@ -1,8 +1,16 @@
 project(Taida VERSION 0.0.1 LANGUAGES C)
 
+if (POLICY CMP0054)
+	cmake_policy(SET CMP0054 NEW)
+endif ()
+
+if (POLICY CMP0077)
+	cmake_policy(SET CMP0077 NEW)
+endif ()
+
 file(GLOB SRCS "src/Taida/*.c" "src/Taida/utils/*.c")
 
-add_library(${PROJECT_NAME} STATIC ${SRCS})
+option(SHARED_LIBS "Build Taida as a Dynamic Library" OFF)
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
@@ -11,7 +19,22 @@ set(GLFW_INSTALL OFF CACHE BOOL "" FORCE)
 
 add_subdirectory("ext/lua")
 add_subdirectory("ext/glad")
+
+if (SHARED_LIBS)
+	message(STATUS "Building GLFW Shared Library")
+	set(BUILD_SHARED_LIBS ON)
+else ()
+	message(STATUS "Building GLFW Static Library")	
+endif ()
 add_subdirectory("ext/glfw")
+
+if (SHARED_LIBS)
+	message(STATUS "Building Taida Dynamic Library")
+	add_library(${PROJECT_NAME} SHARED ${SRCS})
+else ()
+	message(STATUS "Building Taida Static Library")
+	add_library(${PROJECT_NAME} STATIC ${SRCS})
+endif ()
 
 target_include_directories(${PROJECT_NAME} PUBLIC "include")
 target_link_libraries(${PROJECT_NAME} lua glad glfw GL X11 pthread Xrandr Xi dl)
