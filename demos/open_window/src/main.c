@@ -1,5 +1,6 @@
 #include <stdio.h>
-#include "Taida/taida.h"
+#include "Taida/Window.h"
+#include "Taida/System.h"
 
 void update(void);
 void render(void);

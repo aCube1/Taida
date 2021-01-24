@@ -1,5 +1,5 @@
 #include <stdlib.h>
-#include "Taida/taida.h"
+#include "Taida/Window/window.h"
 
 taida_t *taida_create(taida_options_t options, taida_callbacks_t callbacks)
 {
