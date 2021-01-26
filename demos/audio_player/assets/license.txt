@@ -1,0 +1,7 @@
+file: dark fallout.ogg
+source: https://opengameart.org/content/dark-fallout
+license: CC-BY-SA 3.0
+
+file: spell1_0.wav
+source: https://opengameart.org/content/spell-1
+license: CC-BY-SA 3.0
