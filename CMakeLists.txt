@@ -15,6 +15,7 @@ set(CMAKE_C_STARDAND 99)
 option(BUILD_SHARED_LIBS "Build Taida as a Dynamic Library" OFF)
 option(BUILD_DEMOS "Build Demo Folder" ON)
 option(TAIDA_BUILD_WINDOW "Build Window Module" ON)
+option(TAIDA_BUILD_GRAPHICS "Build Graphics Module" ON)
 
 set(GLFW_BUILD_DOCS OFF CACHE BOOL "" FORCE)
 set(GLFW_BUILD_TESTS OFF CACHE BOOL "" FORCE)
@@ -36,4 +37,5 @@ add_subdirectory("src/Taida")
 
 if (BUILD_DEMOS)
 	add_subdirectory("demos/open_window")
+	add_subdirectory("demos/draw_rectangle")
 endif ()

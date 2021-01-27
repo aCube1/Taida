@@ -11,4 +11,7 @@ void taida_loop(taida_t *taida);
 
 bool taida_window_isopen(taida_t *taida);
 
+void taida_getwindow_size(taida_t *taida, int *width, int *height);
+void taida_getwindow_pixelsize(taida_t *taida, int *width, int *height);
+
 #endif /* _WINDOW_H_ */

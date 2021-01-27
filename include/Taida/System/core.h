@@ -34,5 +34,4 @@ typedef struct taida_options {
 	int width, height;
 } taida_options_t;
 
-
 #endif /* _CORE_H_ */

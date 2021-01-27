@@ -90,3 +90,13 @@ bool taida_window_isopen(taida_t *taida)
 {
 	return !(bool) glfwWindowShouldClose(taida->window);
 }
+
+void taida_getwindow_size(taida_t *taida, int *width, int *height)
+{
+	glfwGetWindowSize(taida->window, width, height);
+}
+
+void taida_getwindow_pixelsize(taida_t *taida, int *width, int *height)
+{
+	glfwGetFramebufferSize(taida->window, width, height);
+}
