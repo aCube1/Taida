@@ -1,5 +1,24 @@
 # Taida
 
+## Linux Build
+
+### Ubuntu
+
+sudo apt install -y \
+build-essential \
+libx11-dev \
+libxrandr-dev \
+libxinerama-dev \
+libxcursor-dev \
+libxi-dev \
+libgl-dev \
+libasound2-dev \
+libflac-dev \
+libogg-dev \
+libvorbis-dev \
+libopus-dev
+
+
 ## Windows Build
 
 Needs vcpkg to compile libsndfile

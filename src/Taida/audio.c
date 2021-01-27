@@ -1,12 +1,12 @@
-#include "Taida\audio.h"
+#include "Taida/audio.h"
+#include "Taida/utils/log.h"
 
 #include <stdlib.h>
-#include <Taida\utils\log.h>
 #include <limits.h>
 #include <inttypes.h>
 
-#include <AL\alc.h>
-#include <AL\alext.h>
+#include <AL/alc.h>
+#include <AL/alext.h>
 
 #include <sndfile.h>
 
@@ -50,7 +50,7 @@ int taida_init_audio(const ALchar *devicename)
     }
 
     char info[250];
-    sprintf_s(info, 250, "Opened \"%s\"\n", name);
+    snprintf(info, 250, "Opened \"%s\"\n", name);
     taida_log_info(info);
 
     return 0;
@@ -116,14 +116,14 @@ ALuint taida_get_audio_buffer(const char *filename)
     sndfile = sf_open(filename, SFM_READ, &sfinfo);
     if (!sndfile)
     {
-        sprintf_s(msg, 500, "Could not open audio in %s: %s\n", filename, sf_strerror(sndfile));
+        snprintf(msg, 500, "Could not open audio in %s: %s\n", filename, sf_strerror(sndfile));
         taida_log_error(msg);
         return 0;
     }
 
     if (sfinfo.frames < 1 || sfinfo.frames > (sf_count_t)(INT_MAX / sizeof(short)) / sfinfo.channels)
     {
-        sprintf_s(msg, 500, "Bad sample count in %s (%" PRId64 ")\n", filename, sfinfo.frames);
+        snprintf(msg, 500, "Bad sample count in %s (%" PRId64 ")\n", filename, sfinfo.frames);
         taida_log_error(msg);
         sf_close(sndfile);
         return 0;
@@ -147,7 +147,7 @@ ALuint taida_get_audio_buffer(const char *filename)
     }
     if (!format)
     {
-        sprintf_s(msg, 500, "Unsupported channel count: %d\n", sfinfo.channels);
+        snprintf(msg, 500, "Unsupported channel count: %d\n", sfinfo.channels);
         taida_log_error(msg);
         sf_close(sndfile);
         return 0;
@@ -161,7 +161,7 @@ ALuint taida_get_audio_buffer(const char *filename)
     {
         free(membuf);
         sf_close(sndfile);
-        sprintf_s(msg, 500, "Failed to read samples in %s (%" PRId64 ")\n", filename, num_frames);
+        snprintf(msg, 500, "Failed to read samples in %s (%" PRId64 ")\n", filename, num_frames);
         taida_log_error(msg);
         return 0;
     }
@@ -181,7 +181,7 @@ ALuint taida_get_audio_buffer(const char *filename)
     err = alGetError();
     if (err != AL_NO_ERROR)
     {
-        sprintf_s(msg, 500, "OpenAL Error: %s\n", alGetString(err));
+        snprintf(msg, 500, "OpenAL Error: %s\n", alGetString(err));
         taida_log_error(msg);
         if (buffer && alIsBuffer(buffer))
             alDeleteBuffers(1, &buffer);
